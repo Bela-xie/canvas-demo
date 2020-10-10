@@ -1,0 +1,154 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.active {
+    background-color: rgba(128, 128, 128, 0.3);
+    outline: none;
+}
+
+button {
+    background: transparent;
+    border: none;
+    padding: 10px 5px;
+}
+
+button:focus {
+    background-color: rgba(128, 128, 128, 0.3);
+    outline: none;
+}
+
+#canvas {
+    display: block;
+}
+
+.choosePanel {
+    position: absolute;
+    right: 40px;
+    top: 100px;
+    width: 180px;
+    height: 350px;
+    border: 1px solid gray;
+    padding: 0 10px;
+}
+
+.choosePanel>h3 {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.choosePanel .lines {
+    margin-top: 10px;
+}
+
+.choosePanel .lines .small span {
+    display: inline-block;
+    background-color: black;
+    width: 25px;
+    height: 1px;
+    transform: rotate(-50deg);
+}
+
+
+.choosePanel .lines .medium span {
+    display: inline-block;
+    width: 25px;
+    background-color: black;
+    height: 3px;
+    transform: rotate(-50deg);
+}
+
+.choosePanel .lines .big span {
+    display: inline-block;
+    width: 25px;
+    height: 6px;
+    background-color: black;
+    transform: rotate(-50deg);
+}
+
+.choosePanel .shapes {
+    margin-top: 10px;
+}
+
+.choosePanel .shapes .rect span {
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    border: 1px solid black;
+}
+
+.choosePanel .shapes .arc span {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.choosePanel .shapes .triangle .iconfont {
+    font-size: 25px;
+}
+
+.choosePanel .shapes .triangle-90 .iconfont {
+    font-size: 25px;
+}
+
+/* 手机样式 */
+
+@media (max-width:762px) {
+
+    /* .body-x {
+        width: 100vw;
+        height: 100%;
+        overflow: hidden;
+    } */
+
+    .choosePanel {
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        padding: 0px;
+        right: 0;
+        top: 0;
+        border: none;
+        background-color: rgb(221, 220, 220);
+        display: flex;
+        flex-wrap: wrap;
+        /* justify-content: center; */
+    }
+
+    .choosePanel button {
+        padding: 4px;
+    }
+
+    .choosePanel h3 {
+        font-size: 1.2em;
+        padding: 5px 0;
+        width: 100%;
+    }
+
+    .choosePanel .color {
+        width: 50%;
+    }
+
+    .choosePanel .lines {
+        margin: 0;
+        display: flex;
+        width: 50%;
+    }
+
+    .choosePanel .shapes {
+        margin: 0;
+        margin-top: 5px;
+        display: flex;
+        width: 100%;
+    }
+
+    .choosePanel .lines span {
+        width: 18px !important;
+    }
+}
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */
