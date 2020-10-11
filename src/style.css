@@ -95,19 +95,29 @@ button:focus {
     font-size: 25px;
 }
 
+.choosePanel .erasers .eraser {
+    padding: 2px;
+}
+
+.choosePanel .erasers .smallEraser .iconfont {
+    font-size: 1.5em;
+}
+
+.choosePanel .erasers .mediumEraser .iconfont {
+    font-size: 2em;
+}
+
+.choosePanel .erasers .bigEraser .iconfont {
+    font-size: 2.5em;
+}
+
 /* 手机样式 */
 
 @media (max-width:762px) {
 
-    /* .body-x {
-        width: 100vw;
-        height: 100%;
-        overflow: hidden;
-    } */
-
     .choosePanel {
         width: 100%;
-        height: 100px;
+        height: 145px;
         position: absolute;
         padding: 0px;
         right: 0;
@@ -116,6 +126,7 @@ button:focus {
         background-color: rgb(221, 220, 220);
         display: flex;
         flex-wrap: wrap;
+        font-size: 14px;
         /* justify-content: center; */
     }
 
@@ -146,7 +157,38 @@ button:focus {
         width: 100%;
     }
 
+    .choosePanel .shapes .rect span {
+        width: 20px;
+        height: 20px;
+    }
+
+    .choosePanel .shapes .arc span {
+        width: 20px;
+        height: 20px;
+    }
+
+    .choosePanel .shapes .triangle .iconfont {
+        font-size: 20px;
+    }
+
+    .choosePanel .shapes .triangle-90 .iconfont {
+        font-size: 20px;
+    }
+
     .choosePanel .lines span {
         width: 18px !important;
+    }
+
+    .choosePanel .erasers {
+        margin: 0;
+        margin-top: 5px;
+        padding-bottom: 5px;
+        display: flex;
+        width: 100%;
+    }
+
+
+    .choosePanel p {
+        word-break: keep-all;
     }
 }

@@ -13,21 +13,27 @@ setColor();
 listenButtonClick();
 //初始化画板
 let ctx = canvas.getContext("2d");
-
+addActive(document.querySelector("#medium"))
 
 const drawOnDevicesMap = {
     drawLineOnDevices: isTouchDevice ? drawLineOnTouchDevice : drawLineOnClickDevice,
     drawRectOnDevices: isTouchDevice ? drawRectOnTouchDevice : drawRectOnClickDevice,
     drawArcOnDevices: isTouchDevice ? drawArcOnTouchDevice : drawArcOnClickDevice,
     drawTriangleOnDevices: isTouchDevice ? drawTriangleOnTouchDevice : drawTriangleOnClickDevice,
-    // drawTriangle90OnDevices: isTouchDevice ? drawTriangle90OnTouchDevice : drawTriangle90OnClickDevice,
+    clearOnDevices: isTouchDevice ? clearOnTouchDevice : clearOnClickDevice
 }
 drawOnDevicesMap["drawLineOnDevices"]()
 //添加active类
 function addActive(btn) {
     const btns = document.querySelectorAll("button")
+    document.body.style.cursor = "grabbing"
+    if (btn.classList.contains("eraser")) {
+        console.log("lai")
+        document.body.style.cursor = "cell"
+    }
     for (let i = 0; i < btns.length; i++) {
         if (btns[i].classList.contains("active")) {
+
             btns[i].classList.remove("active")
         }
     }
@@ -43,6 +49,9 @@ function listenButtonClick() {
     const arcBtn = document.getElementById("arc")
     const triangleBtn = document.getElementById("triangle")
     const triangle90Btn = document.getElementById("triangle-90")
+    const smallEraserBtn = document.getElementById("smallEraser")
+    const mediumEraserBtn = document.getElementById("mediumEraser")
+    const bigEraserBtn = document.getElementById("bigEraser")
     smallBtn.onclick = e => {
         currentLineWidth = e.currentTarget.dataset.size;
         addActive(e.currentTarget)
@@ -73,6 +82,18 @@ function listenButtonClick() {
     triangle90Btn.onclick = e => {
         addActive(e.currentTarget)
         drawOnDevicesMap["drawTriangleOnDevices"](true);
+    }
+    smallEraserBtn.onclick = e => {
+        addActive(e.currentTarget)
+        drawOnDevicesMap["clearOnDevices"](50);
+    }
+    mediumEraserBtn.onclick = e => {
+        addActive(e.currentTarget)
+        drawOnDevicesMap["clearOnDevices"](100);
+    }
+    bigEraserBtn.onclick = e => {
+        addActive(e.currentTarget)
+        drawOnDevicesMap["clearOnDevices"](150);
     }
 }
 
@@ -335,5 +356,27 @@ function drawTriangleOnTouchDevice(is90) {
             drawTriangle(e, is90)
         }
         clearPointX = undefined
+    }
+}
+
+//在非触摸屏上-橡皮擦
+function clearOnClickDevice(width) {
+    canvas.onmousemove = (e) => {
+        if (painting) {
+            ctx.clearRect(e.clientX - width / 2, e.clientY - width / 2, width, width)
+        }
+    }
+    canvas.onmousedown = () => {
+        painting = true
+    }
+    canvas.onmouseup = () => {
+        painting = false;
+    }
+}
+
+// 在触摸屏上-橡皮擦
+function clearOnTouchDevice(width) {
+    canvas.ontouchmove = (e) => {
+        ctx.clearRect(e.touches[0].clientX - width / 2, e.touches[0].clientY - width / 2, width, width)
     }
 }
